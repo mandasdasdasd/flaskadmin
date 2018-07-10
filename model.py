@@ -1,16 +1,11 @@
 # coding=utf-8
 from . import db
-from flask import request
 
 
 class Auth(object):
 
     def __init__(self):
         pass
-    def get_token(self):
-        cookie = request.cookies
-        token = cookie.get("token")
-        return token
 
 
 class Myblog_list(db.Model):

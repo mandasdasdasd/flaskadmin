@@ -1,41 +1,19 @@
 # coding=utf-8
 from flask_admin import BaseView, expose
-from flask import url_for, redirect
-from flask import make_response
 from flask_admin.contrib.sqla import ModelView
 from util import CKTextAreaField
-from model import Auth
-import requests
+from util import logindecorator
 
 
 class Login(BaseView):
 
     @expose('/')
-    def login(self):
-        auth_obj = Auth()
-        token = auth_obj.get_token()
-        data = {"token": token}
-        auth_url = "http://vue.manyushuai.site/api/xianyu/get_user/login"
-        auth = requests.post(auth_url, cookies=data)
-        try:
-            if int(auth.text) == 1:
-                return self.render('page.html')
-        except AssertionError:
-            return redirect('http://vue.manyushuai.site/#/login')
-        else:
-            return redirect('http://vue.manyushuai.site/#/login')
-
-
-class Page(BaseView):
-
-    @expose('/')
-    def page(self):
-        res = make_response("hello")
-        res.set_cookie('hyman', '123')
-        return res
+    def index(self):
+        return self.render('page.html')
 
 
 class TestModel(ModelView):
+    @logindecorator
     def is_accessible(self):
         '''定义只有登陆过的人才有权限访问，也就是只有这个方法返回True'''
         # return False

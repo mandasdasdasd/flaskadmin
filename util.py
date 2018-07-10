@@ -1,5 +1,8 @@
 from wtforms import TextAreaField
 from wtforms.widgets import TextArea
+from flask import request
+import requests
+from flask import redirect
 
 
 class CKTextAreaWidget(TextArea):
@@ -13,3 +16,18 @@ class CKTextAreaWidget(TextArea):
 
 class CKTextAreaField(TextAreaField):
     widget = CKTextAreaWidget()
+
+
+def logindecorator(fun):
+    def wrapper(self):
+        cookie = request.cookies
+        token = cookie.get("token")
+        data = {"token": token}
+        auth_url = "http://vue.manyushuai.site/api/xianyu/get_user/login"
+        auth = requests.post(auth_url, cookies=data)
+        try:
+            if int(auth.text) == 1:
+                fun()
+        except:
+            return redirect('http://vue.manyushuai.site/#/login')
+    return wrapper
