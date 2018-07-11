@@ -9,7 +9,7 @@ class Login(BaseView):
 
     @expose('/')
     def index(self):
-        return self.render('page.html')
+        return self.render('index.html')
 
 
 class TestModel(ModelView):
