@@ -16,7 +16,7 @@ def create_app():
     admin = Admin(app, name='MyAdmin', index_view=AdminIndexView(template='home.html'), template_mode='bootstrap3')
 
     app.config['SECRET_KEY'] = '123456'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ysman:123456@47.93.187.111:3306/myblog'
+    app.config['SQLALCHEMY_DATABASE_URI'] = ''
 
     admin.add_view(TestModel(Myblog_list, db.session))
     admin.add_view(Login(name='test', endpoint='index'))
