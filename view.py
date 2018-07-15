@@ -21,12 +21,13 @@ class TestModel(ModelView):
 
     # column_list = ('title', 'content') # 要展示的字段
     can_create = True  # 设置_不能
-    can_edit = False  # 设置_不能编辑
+    can_edit = True  # 设置_不能编辑
     can_delete = False  # 设置_不能删除
     # column_exclude_list = ('content')  # 除了这个字段都展示
     column_labels = dict(title=u'标题')  # 替换字段战士名称
     column_filters = ('title', 'author', 'content', 'like', 'create_time')
     form_create_rules = ('title', 'author', 'content') # 控制可新建的字段 
+    form_edit_rules = ('title', 'author', 'content') # 控制可编辑字段 
     column_descriptions = dict(
         title=u'文章标题',
         like=u'点赞数',
