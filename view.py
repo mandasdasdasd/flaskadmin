@@ -20,7 +20,7 @@ class TestModel(ModelView):
         return True
 
     column_display_pk = True  # 展示主键
-    column_list = ('id','author', 'like', 'articleclass', 'create_time', 'content', ) # 要展示的字段
+    column_list = ('id','author', 'like', 'articleclass', 'create_time', 'update_time', 'status', 'content', ) # 要展示的字段
     can_create = True  # 设置_不能
     can_edit = True  # 设置_不能编辑
     can_delete = False  # 设置_不能删除
@@ -28,7 +28,7 @@ class TestModel(ModelView):
     column_labels = dict(title=u'标题')  # 替换字段战士名称
     column_sortable_list = ('id', 'create_time', 'like',)
     column_filters = ('title', 'author', 'content', 'like', 'create_time')
-    form_create_rules = ('title', 'author', 'content', 'articleclass')  # 控制可新建的字段
+    form_create_rules = ('title', 'author', 'content', 'articleclass', 'create_time')  # 控制可新建的字段
     form_edit_rules = ('title', 'author', 'content', 'articleclass')  # 控制可编辑字段
     column_descriptions = dict(
         title=u'文章标题',
