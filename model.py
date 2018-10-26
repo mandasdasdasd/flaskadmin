@@ -24,7 +24,7 @@ class Myblog_list(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     title = db.Column(db.String(128), nullable=False)
-    like = db.Column(db.Integer, nullable=False, default=0)
+    like_number = db.Column(db.Integer, nullable=False, default=0)
     status = db.Column(db.Integer, nullable=False, default=1)
     author = db.Column(db.String(64), nullable=False)
     create_time = db.Column(db.DateTime, nullable=False)

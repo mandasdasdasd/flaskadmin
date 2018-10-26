@@ -18,13 +18,13 @@ def create_app():
     admin = Admin(app, name='MyAdmin', index_view=AdminIndexView(template='home.html'), template_mode='bootstrap3')
 
     app.config['SECRET_KEY'] = '123456'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ysman:123456@localhost:3306/myblog?charset=utf8mb4'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ysman:123456@mysql:3306/myblog?charset=utf8mb4'
 
     admin.add_view(TestModel(Myblog_list, db.session))
     admin.add_view(Login(name='test', endpoint='index'))
 
     # path = op.join(op.dirname(__file__), 'static')
-    path = "/var/www/mysite/html/static/"
-    admin.add_view(FileAdmin(path, '/img', name='Static Files'))
+    # path = "/var/www/mysite/html/static/"
+    # admin.add_view(FileAdmin(path, '/img', name='Static Files'))
 
     return app
