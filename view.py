@@ -4,6 +4,16 @@ from flask_admin.contrib.sqla import ModelView
 from util import CKTextAreaField
 from util import logindecorator
 
+TYPES = [
+    ('1', u'python'),
+    ('2', u'杂文'),
+    ('3', u'linux'),
+    ('4', u'前端'),
+    ('5', u'duanzi'),
+    ('6', u'read'),
+    ('7', u'美剧')
+    ]
+
 
 class Login(BaseView):
 
@@ -19,11 +29,13 @@ class ArticleCategoryModel(ModelView):
         # return False
         return True
     column_list = ('id', 'article_id', 'category_id' ) # 要展示的字段
-    form_create_rules = ('category_id', 'article_id')  # 控制可新建的字段
-    # form_edit_rules = ('category_id',)  # 控制可编辑字段
+    form_create_rules = ('article_id', 'category_id',)  # 控制可新建的字段
+    form_edit_rules = ('category_id',)  # 控制可编辑字段
     can_create = True  # 设置_不能
     can_edit = True  # 设置_不能编辑
     can_delete = False  # 设置_不能删除
+    form_choices = {'category_id': TYPES}
+    column_default_sort = ('article_id', True)
 
 
 class MyblogModel(ModelView):
@@ -42,8 +54,14 @@ class MyblogModel(ModelView):
     column_labels = dict(title=u'标题')  # 替换字段战士名称
     column_default_sort = ('create_time', True)
     column_filters =('title', 'author', 'content', 'like_number', 'create_time', 'status')
-    form_create_rules = ('title', 'author', 'content', 'create_time', 'articleclass')  # 控制可新建的字段
+    form_create_rules = ('title', 'author', 'content', 'create_time', 'status')  # 控制可新建的字
     form_edit_rules = ('title', 'author', 'content', 'status')  # 控制可编辑字段
+    form_choices = {
+    'status': [
+        ('0', u'无效'),
+        ('1', u'有效')
+        ]
+    }   
     column_descriptions = dict(
         title=u'文章标题',
         like_number=u'点赞数',

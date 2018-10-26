@@ -30,7 +30,7 @@ class Myblog_list(db.Model):
     create_time = db.Column(db.DateTime, nullable=False)
     update_time = db.Column(db.DateTime, nullable=False)
     content = db.Column(db.Text, nullable=False)
-    articleclass = db.relationship('Article_class', backref='articleid')  # backred 允许反向查找
+    # articleclass = db.relationship('Article_class', backref='articleid')  # backred 允许反向查找
 
     def __repr__(self):
         # return '<%r>' % self.category
@@ -42,10 +42,8 @@ class Article_class(db.Model):
     __table_name__ = 'article_class'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    article_id = db.Column(db.Integer, db.ForeignKey('myblog_list.id'))
-    category_id = db.Column(ChoiceType(TYPES))
+    article_id = db.Column(db.Integer, nullable=False, default=1)
+    category_id = db.Column(db.Integer, nullable=False, default=1)
 
     def __str__(self):
-        # return '<%r>' % self.category
-        article_obj = self.category_id
-        return '%s' % article_obj.value
+        return '%r' % self.category_id
