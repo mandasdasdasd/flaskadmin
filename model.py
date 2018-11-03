@@ -47,3 +47,16 @@ class Article_class(db.Model):
 
     def __str__(self):
         return '%r' % self.category_id
+
+class Top_list(db.Model):
+
+    __table_name__ = 'toparticle'
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    article_id = db.Column(db.Integer, nullable=False, default=1)
+    create_time = db.Column(db.DateTime, nullable=False)
+    expire_time = db.Column(db.DateTime, nullable=False)
+    status = db.Column(db.Integer, nullable=False, default=1)
+
+    def __str__(self):
+        return '%r' % self.category_id
