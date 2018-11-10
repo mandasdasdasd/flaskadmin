@@ -10,8 +10,8 @@ app = Flask(__name__, template_folder='templates')
 db = SQLAlchemy(app)
 
 
-from view import Login, MyblogModel, ArticleCategoryModel, TopArticleModel
-from model import Myblog_list, Article_class, Top_list
+from view import Login, MyblogModel, ArticleCategoryModel, TopArticleModel, UsPramaModel
+from model import Myblog_list, Article_class, Top_list, Us_prama
 
 
 def create_app():
@@ -23,6 +23,7 @@ def create_app():
     admin.add_view(MyblogModel(Myblog_list, db.session))
     admin.add_view(ArticleCategoryModel(Article_class, db.session))
     admin.add_view(TopArticleModel(Top_list, db.session))
+    admin.add_view(UsPramaModel(Us_prama, db.session))
     admin.add_view(Login(name='test', endpoint='index'))
 
     path = op.join(op.dirname(__file__), 'static')

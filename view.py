@@ -21,6 +21,19 @@ class Login(BaseView):
     def index(self):
         return self.render('index.html')
   
+class UsPramaModel(ModelView):
+    @logindecorator
+    def is_accessible(self):
+        '''定义只有登陆过的人才有权限访问，也就是只有这个方法返回True'''
+        # return False
+        return True
+    column_list = ('id', 'title', 'actor', 'plot', 'createtime', 'updatetime', 'status') # 要展示的字段
+    form_create_rules = ('title', 'actor', 'plot', 'createtime', 'status')  # 控制可新建的字段
+    can_create = True  # 设置_不能
+    can_edit = True  # 设置_不能编辑
+    can_delete = False  # 设置_不能删除
+    form_edit_rules = ('title', 'actor', 'plot', 'status', 'updatetime')  # 控制可编辑字段
+
 
 class TopArticleModel(ModelView):
     @logindecorator
