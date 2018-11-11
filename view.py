@@ -11,7 +11,8 @@ TYPES = [
     ('4', u'前端'),
     ('5', u'段子'),
     ('6', u'读书'),
-    ('7', u'美剧')
+    ('7', u'美剧'),
+    ('8', u'数据库')
     ]
 
 
@@ -31,7 +32,7 @@ class UsPramaModel(ModelView):
     form_create_rules = ('title', 'actor', 'plot', 'createtime', 'status')  # 控制可新建的字段
     can_create = True  # 设置_不能
     can_edit = True  # 设置_不能编辑
-    can_delete = False  # 设置_不能删除
+    can_delete = True  # 设置_不能删除
     form_edit_rules = ('title', 'actor', 'plot', 'status', 'updatetime')  # 控制可编辑字段
 
 
