@@ -61,7 +61,7 @@ class ArticleCategoryModel(ModelView):
     form_edit_rules = ('category_id',)  # 控制可编辑字段
     can_create = True  # 设置_不能
     can_edit = True  # 设置_不能编辑
-    can_delete = False  # 设置_不能删除
+    can_delete = True  # 设置_不能删除
     form_choices = {'category_id': TYPES}
     column_default_sort = ('article_id', True)
 
@@ -74,7 +74,7 @@ class MyblogModel(ModelView):
         return True
 
     column_display_pk = True  # 展示主键
-    column_list = ('id','author', 'like_number', 'create_time', 'update_time', 'status', 'content', ) # 要展示的字段
+    column_list = ('id', 'title','author', 'like_number', 'create_time', 'update_time', 'status', 'content', ) # 要展示的字段
     can_create = True  # 设置_不能
     can_edit = True  # 设置_不能编辑
     can_delete = False  # 设置_不能删除
