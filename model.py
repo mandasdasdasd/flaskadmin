@@ -37,6 +37,7 @@ class Myblog_read(db.Model):
     status = db.Column(db.Integer, nullable=False, default=1)
     author = db.Column(db.String(64), nullable=False)
     beginning = db.Column(db.String(64), nullable=False)
+    image = db.Column(db.String(512), nullable=False)
     create_time = db.Column(db.DateTime, nullable=False)
     update_time = db.Column(db.DateTime, nullable=False)
     content = db.Column(db.Text, nullable=False)

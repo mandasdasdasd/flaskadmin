@@ -2,7 +2,7 @@
 from flask_admin import BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from util import CKTextAreaField
-from util import logindecorator
+#from util import logindecorator
 
 TYPES = [
     ('1', u'python'),
@@ -23,7 +23,7 @@ class Login(BaseView):
         return self.render('index.html')
   
 class UsPramaModel(ModelView):
-    @logindecorator
+    #@logindecorator
     def is_accessible(self):
         '''定义只有登陆过的人才有权限访问，也就是只有这个方法返回True'''
         # return False
@@ -37,7 +37,7 @@ class UsPramaModel(ModelView):
 
 
 class TopArticleModel(ModelView):
-    @logindecorator
+    #@logindecorator
     def is_accessible(self):
         '''定义只有登陆过的人才有权限访问，也就是只有这个方法返回True'''
         # return False
@@ -51,7 +51,7 @@ class TopArticleModel(ModelView):
 
 
 class ArticleCategoryModel(ModelView):
-    @logindecorator
+    #@logindecorator
     def is_accessible(self):
         '''定义只有登陆过的人才有权限访问，也就是只有这个方法返回True'''
         # return False
@@ -67,7 +67,7 @@ class ArticleCategoryModel(ModelView):
 
 
 class MyblogModel(ModelView):
-    @logindecorator
+    #@logindecorator
     def is_accessible(self):
         '''定义只有登陆过的人才有权限访问，也就是只有这个方法返回True'''
         # return False
@@ -104,14 +104,14 @@ class MyblogModel(ModelView):
 
 
 class MyblogReadModel(ModelView):
-    @logindecorator
+    #@logindecorator
     def is_accessible(self):
         '''定义只有登陆过的人才有权限访问，也就是只有这个方法返回True'''
         # return False
         return True
 
     column_display_pk = True  # 展示主键
-    column_list = ('id', 'title', 'beginning', 'author', 'like_number', 'create_time', 'update_time', 'status', 'content') # 要展示的字段
+    column_list = ('id', 'title', 'beginning', 'image', 'author', 'like_number', 'create_time', 'update_time', 'status', 'content') # 要展示的字段
     can_create = True  # 设置_不能
     can_edit = True  # 设置_不能编辑
     can_delete = False  # 设置_不能删除
@@ -119,8 +119,8 @@ class MyblogReadModel(ModelView):
     column_labels = dict(title=u'标题')  # 替换字段战士名称
     column_default_sort = ('create_time', True)
     column_filters =('title', 'author', 'content', 'like_number', 'create_time', 'status', 'beginning')
-    form_create_rules = ('title', 'author', 'content', 'create_time', 'status', 'beginning')  # 控制可新建的字
-    form_edit_rules = ('title', 'author', 'content', 'status', 'beginning')  # 控制可编辑字段
+    form_create_rules = ('title', 'author', 'content', 'image','create_time', 'status', 'beginning')  # 控制可新建的字
+    form_edit_rules = ('title', 'author', 'content', 'image', 'status', 'beginning')  # 控制可编辑字段
     form_choices = {
     'status': [
         ('0', u'无效'),
