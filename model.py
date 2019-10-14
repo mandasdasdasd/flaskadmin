@@ -18,6 +18,7 @@ class Myblog_list(db.Model):
     like_number = db.Column(db.Integer, nullable=False, default=0)
     status = db.Column(db.Integer, nullable=False, default=1)
     author = db.Column(db.String(64), nullable=False)
+    img = db.Column(db.Text, nullable=False)
     create_time = db.Column(db.DateTime, nullable=False)
     update_time = db.Column(db.DateTime, nullable=False)
     content = db.Column(db.Text, nullable=False)

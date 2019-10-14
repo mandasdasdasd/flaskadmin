@@ -74,7 +74,7 @@ class MyblogModel(ModelView):
         return True
 
     column_display_pk = True  # 展示主键
-    column_list = ('id', 'title','author', 'like_number', 'create_time', 'update_time', 'status', 'content', ) # 要展示的字段
+    column_list = ('id', 'title','author', 'like_number', 'img', 'create_time', 'update_time', 'status', 'content', ) # 要展示的字段
     can_create = True  # 设置_不能
     can_edit = True  # 设置_不能编辑
     can_delete = False  # 设置_不能删除
@@ -82,8 +82,8 @@ class MyblogModel(ModelView):
     column_labels = dict(title=u'标题')  # 替换字段战士名称
     column_default_sort = ('create_time', True)
     column_filters =('title', 'author', 'content', 'like_number', 'create_time', 'status')
-    form_create_rules = ('title', 'author', 'content', 'create_time', 'status')  # 控制可新建的字
-    form_edit_rules = ('title', 'author', 'content', 'status')  # 控制可编辑字段
+    form_create_rules = ('title', 'author', 'content', 'img', 'create_time', 'status')  # 控制可新建的字
+    form_edit_rules = ('title', 'author', 'content', 'status', 'img')  # 控制可编辑字段
     form_choices = {
     'status': [
         ('0', u'无效'),
